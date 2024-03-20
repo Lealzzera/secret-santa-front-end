@@ -1,4 +1,4 @@
-export default async function IconNotFoundPage() {
+export default function IconNotFoundPage() {
 	return (
 		<svg
 			width='128'

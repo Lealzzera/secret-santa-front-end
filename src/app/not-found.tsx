@@ -1,8 +1,16 @@
+"use client";
 import IconNotFoundPage from "@/icons/icon-not-found-page";
 import styles from "./not-found.module.css";
 import Button from "@/components/button/button";
+import { useRouter } from "next/navigation";
 
-export default async function NotFoundPage() {
+export default function NotFoundComponent() {
+	const router = useRouter();
+
+	function redirectHomePage() {
+		return router.push("/");
+	}
+
 	return (
 		<section className={styles.containerNotFound}>
 			<div>
@@ -16,7 +24,7 @@ export default async function NotFoundPage() {
 				</p>
 			</div>
 			<div className={styles.buttonContainer}>
-				<Button>Voltar</Button>
+				<Button handleClick={redirectHomePage}>Voltar</Button>
 			</div>
 		</section>
 	);
