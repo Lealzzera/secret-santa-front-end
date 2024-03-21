@@ -1,0 +1,35 @@
+.modalContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  top: 0;
+}
+
+.modalContentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.modalContent {
+  background-color: #1E1E1E;
+  width: 334px;
+  height: 329px;
+  border-radius: 6px;
+}
+
+.text {
+  font-family: var(--font-monospace);
+  font-size: 16px;
+  text-align: center;
+  width: 199px;
+  margin: 81px auto 0;
+}
+
+.text span {
+  font-family: var(--font-sans);
+  font-weight: bold;
+}

@@ -1,3 +1,9 @@
+import SearchPage from "@/components/search-page/search-page";
+
 export default function Home() {
-	return <main>Tela inicial user</main>;
+	return (
+		<main>
+			<SearchPage />
+		</main>
+	);
 }

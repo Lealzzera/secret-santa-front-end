@@ -17,7 +17,9 @@ export default function NotFoundComponent() {
 				<IconNotFoundPage />
 			</div>
 			<div>
-				<h1 className={styles.title}>Parece que não temos nada por aqui</h1>
+				<h1 className={`mobile-title ${styles.title}`}>
+					Parece que não temos nada por aqui
+				</h1>
 				<p className={styles.text}>
 					Talvez o seu evento não tenha iniciado ainda,
 					<br /> volte aqui mais tarde.

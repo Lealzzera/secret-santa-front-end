@@ -17,7 +17,7 @@ export default function RootLayout({
 			className={`${font_monospace.variable} ${font_sans.variable}`}
 			lang='pt-BR'
 		>
-			<body>{children}</body>
+			<body className='container'>{children}</body>
 		</html>
 	);
 }
