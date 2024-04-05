@@ -35,3 +35,11 @@
   font-family: var(--font-sans);
   font-weight: bold;
 }
+
+.containerButtons {
+  display: flex;
+  gap: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 70px;
+}

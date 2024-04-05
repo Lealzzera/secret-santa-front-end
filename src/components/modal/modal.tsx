@@ -10,17 +10,13 @@ type ModalProps = {
 	cpfModalText?: string;
 };
 
-const Modal = ({ itsModalOpen, cpfModalText, setCloseModal }: ModalProps) => {
+const Modal = ({ itsModalOpen }: ModalProps) => {
 	const [itsOpen, setItsOpen] = useState(false);
-
-	const closeModal = () => {
-		setCloseModal(!itsModalOpen);
-	};
 
 	return (
 		<div
 			className={styles.modalContainer}
-			style={{ display: `${itsOpen ? "block" : "none"}` }}
+			style={{ display: `${itsModalOpen ? "block" : "none"}` }}
 		>
 			<div className={styles.modalContentContainer}>
 				<div className={styles.modalContent}>
@@ -30,8 +26,10 @@ const Modal = ({ itsModalOpen, cpfModalText, setCloseModal }: ModalProps) => {
 						</p>
 					</div>
 					<div className={styles.containerButtons}>
-						<Button handleClick={closeModal}>Sim</Button>
-						<Button handleClick={closeModal}>Não</Button>
+						<Button handleClick={() => console.log("sim")}>Sim</Button>
+						<Button secondaryButton handleClick={() => console.log("Não")}>
+							Não
+						</Button>
 					</div>
 				</div>
 			</div>
