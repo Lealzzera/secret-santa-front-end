@@ -3,16 +3,20 @@
 import { useState } from "react";
 import Button from "../button/button";
 import styles from "./modal.module.css";
+import { useRouter } from "next/navigation";
 
 type ModalProps = {
 	itsModalOpen?: boolean;
-	setCloseModal: (value: boolean) => void;
+	handleCloseModal: () => void;
 	cpfModalText?: string;
 };
 
-const Modal = ({ itsModalOpen }: ModalProps) => {
-	const [itsOpen, setItsOpen] = useState(false);
-
+const Modal = ({ itsModalOpen, handleCloseModal }: ModalProps) => {
+	const router = useRouter();
+	const redirectUser = () => {
+		handleCloseModal();
+		router.push("/home");
+	};
 	return (
 		<div
 			className={styles.modalContainer}
@@ -26,8 +30,8 @@ const Modal = ({ itsModalOpen }: ModalProps) => {
 						</p>
 					</div>
 					<div className={styles.containerButtons}>
-						<Button handleClick={() => console.log("sim")}>Sim</Button>
-						<Button secondaryButton handleClick={() => console.log("Não")}>
+						<Button handleClick={redirectUser}>Sim</Button>
+						<Button secondaryButton handleClick={handleCloseModal}>
 							Não
 						</Button>
 					</div>

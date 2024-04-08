@@ -8,6 +8,7 @@ import Modal from "../modal/modal";
 
 const SearchPage = () => {
 	const [inputValue, setInputValue] = useState("");
+	const [openModal, setOpenModal] = useState(false);
 
 	const handleChangeInputValue = (event: Event) => {
 		const inputTarget = event.target as HTMLInputElement;
@@ -35,11 +36,11 @@ const SearchPage = () => {
 					typeInput='text'
 					changeValue={handleChangeInputValue}
 				/>
-				<Button handleClick={() => console.log("buscar button")}>Buscar</Button>
+				<Button handleClick={() => setOpenModal(true)}>Buscar</Button>
 			</div>
 			<Modal
-				itsModalOpen={true}
-				setCloseModal={() => console.log("close modal")}
+				handleCloseModal={() => setOpenModal(false)}
+				itsModalOpen={openModal}
 			/>
 		</section>
 	);
