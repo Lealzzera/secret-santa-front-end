@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Button from "../button/button";
 import styles from "./modal.module.css";
 import { useRouter } from "next/navigation";
+import { getUserEvent } from "@/api/api";
 
 type ModalProps = {
 	itsModalOpen?: boolean;
@@ -13,9 +13,10 @@ type ModalProps = {
 
 const Modal = ({ itsModalOpen, handleCloseModal }: ModalProps) => {
 	const router = useRouter();
-	const redirectUser = () => {
+	const redirectUser = async () => {
 		handleCloseModal();
-		router.push("/home");
+		const response = await getUserEvent();
+		console.log(response.data);
 	};
 	return (
 		<div
