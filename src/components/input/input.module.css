@@ -6,4 +6,10 @@
   border-radius: 6px;
   width: 100%;
   box-sizing: border-box;
+  margin: 0px;
+}
+
+.errorMessage {
+  color: #ff5555;
+  margin-bottom: 2px;
 }
