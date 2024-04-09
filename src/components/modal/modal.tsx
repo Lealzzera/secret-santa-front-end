@@ -4,18 +4,24 @@ import Button from "../button/button";
 import styles from "./modal.module.css";
 import { useRouter } from "next/navigation";
 import { getUserEvent } from "@/api/api";
+import formatCpfHelper from "@/helpers/format-cpf-helper";
 
 type ModalProps = {
 	itsModalOpen?: boolean;
 	handleCloseModal: () => void;
-	cpfModalText?: string;
+	cpfModalText: string;
 };
 
-const Modal = ({ itsModalOpen, handleCloseModal }: ModalProps) => {
+const Modal = ({
+	itsModalOpen,
+	handleCloseModal,
+	cpfModalText,
+}: ModalProps) => {
 	const router = useRouter();
 	const redirectUser = async () => {
 		handleCloseModal();
-		const response = await getUserEvent();
+		const cpfFormatted = formatCpfHelper(cpfModalText);
+		const response = await getUserEvent(9, cpfFormatted);
 		console.log(response.data);
 	};
 	return (
@@ -27,7 +33,7 @@ const Modal = ({ itsModalOpen, handleCloseModal }: ModalProps) => {
 				<div className={styles.modalContent}>
 					<div className={styles.text}>
 						<p>
-							O seu CPF é o <span>XXX.XXX.XXX-XX?</span>
+							O seu CPF é o <span>{cpfModalText}?</span>
 						</p>
 					</div>
 					<div className={styles.containerButtons}>

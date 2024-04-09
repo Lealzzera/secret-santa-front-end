@@ -64,7 +64,11 @@ const SearchPage = () => {
 				/>
 				<Button handleClick={handleValidateCPF}>Buscar</Button>
 			</div>
-			<Modal handleCloseModal={handleCloseModal} itsModalOpen={openModal} />
+			<Modal
+				cpfModalText={inputValue}
+				handleCloseModal={handleCloseModal}
+				itsModalOpen={openModal}
+			/>
 		</section>
 	);
 };
