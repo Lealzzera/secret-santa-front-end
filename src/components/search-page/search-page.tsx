@@ -2,13 +2,17 @@
 
 import Input from "@/components/input/input";
 import styles from "./search-page.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../button/button";
 import Modal from "../modal/modal";
 import formatCpfHelper from "@/helpers/format-cpf-helper";
 import changeValueToCpfFormat from "@/helpers/change-value-to-cpf-format";
 
-const SearchPage = () => {
+type SearchPageProps = {
+	idEvent?: number;
+};
+
+const SearchPage = ({ idEvent }: SearchPageProps) => {
 	const [inputValue, setInputValue] = useState("");
 	const [openModal, setOpenModal] = useState(false);
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -66,6 +70,7 @@ const SearchPage = () => {
 			</div>
 			<Modal
 				cpfModalText={inputValue}
+				idEvent={idEvent}
 				handleCloseModal={handleCloseModal}
 				itsModalOpen={openModal}
 			/>

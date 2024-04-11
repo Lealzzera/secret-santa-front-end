@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { font_monospace, font_sans } from "@/functions/fonts";
+import UserEventsContextProvider from "@/context/userEventsContext";
 
 export const metadata: Metadata = {
 	title: "Amigo Secreto",
@@ -17,7 +18,9 @@ export default function RootLayout({
 			className={`${font_monospace.variable} ${font_sans.variable}`}
 			lang='pt-BR'
 		>
-			<body className='container'>{children}</body>
+			<UserEventsContextProvider>
+				<body className='container'>{children}</body>
+			</UserEventsContextProvider>
 		</html>
 	);
 }
