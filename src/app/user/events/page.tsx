@@ -1,5 +1,3 @@
-"use client";
-
 import EventsPageComponent from "@/components/events-page/events-page";
 
 export default function EventsPage() {
