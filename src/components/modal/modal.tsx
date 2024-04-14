@@ -13,22 +13,23 @@ type ModalProps = {
 	handleCloseModal: () => void;
 	cpfModalText: string;
 	idEvent?: number;
+	redirectUser: () => void;
 };
 
 const Modal = ({
 	itsModalOpen,
 	handleCloseModal,
 	cpfModalText,
+	redirectUser,
 }: ModalProps) => {
-	const router = useRouter();
 	const eventsContext = useContext(UserEventsContext);
-	const redirectUser = async () => {
-		const cpfFormatted = formatCpfHelper(cpfModalText);
-		const response = await getUserEventsByCPF(cpfFormatted);
-		eventsContext?.setEvents(response.events);
-		handleCloseModal();
-		router.push("user/events");
-	};
+	// const redirectUser = async () => {
+	// 	const cpfFormatted = formatCpfHelper(cpfModalText);
+	// 	const response = await getUserEventsByCPF(cpfFormatted);
+	// 	eventsContext?.setEvents(response.events);
+	// 	handleCloseModal();
+	// 	router.push("user/events");
+	// };
 	return (
 		<div
 			className={styles.modalContainer}

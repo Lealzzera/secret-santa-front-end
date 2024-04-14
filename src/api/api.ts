@@ -9,7 +9,7 @@ export const getUserEvent = async (idEvent: number, cpf: string) => {
 	}
 };
 
-export const getUserEventsByCPF = async (cpf: string) => {
+export const getUserEventsByCPF = async (cpf: string | undefined) => {
 	try {
 		const response = await req.get(`/events-by-cpf/${cpf}`);
 		return response.data;

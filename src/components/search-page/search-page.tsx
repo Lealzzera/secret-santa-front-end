@@ -7,6 +7,10 @@ import Button from "../button/button";
 import Modal from "../modal/modal";
 import formatCpfHelper from "@/helpers/format-cpf-helper";
 import changeValueToCpfFormat from "@/helpers/change-value-to-cpf-format";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import setCookies from "@/actions/setCookies";
 
 type SearchPageProps = {
 	idEvent?: number;
@@ -16,6 +20,7 @@ const SearchPage = ({ idEvent }: SearchPageProps) => {
 	const [inputValue, setInputValue] = useState("");
 	const [openModal, setOpenModal] = useState(false);
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
+	const router = useRouter();
 
 	const handleChangeInputValue = (event: Event) => {
 		if (inputValue.length === 1) {
@@ -45,6 +50,12 @@ const SearchPage = ({ idEvent }: SearchPageProps) => {
 		setInputValue("");
 	};
 
+	const redirectUser = async () => {
+		const cpfFormatted = formatCpfHelper(inputValue);
+		await setCookies("cpf", cpfFormatted);
+		router.push("user/events");
+	};
+
 	return (
 		<section className={styles.container}>
 			<div>
@@ -70,6 +81,7 @@ const SearchPage = ({ idEvent }: SearchPageProps) => {
 			</div>
 			<Modal
 				cpfModalText={inputValue}
+				redirectUser={redirectUser}
 				idEvent={idEvent}
 				handleCloseModal={handleCloseModal}
 				itsModalOpen={openModal}

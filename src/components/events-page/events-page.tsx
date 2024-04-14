@@ -1,27 +1,37 @@
 "use client";
 
-import { useContext } from "react";
-import { UserEventsContext } from "@/context/userEventsContext";
 import styles from "./events-page.module.css";
 import CardComponent from "@/components/card-component/card-component";
+import { Event } from "@/types/types";
 
-export default function EventsPageComponent() {
-	const eventsContext = useContext(UserEventsContext);
+type EventsPageComponentProps = {
+	events: Event[];
+};
+
+export default function EventsPageComponent({
+	events,
+}: EventsPageComponentProps) {
 	return (
 		<section>
-			<div className={styles.titleContainer}>
-				<h1 className={styles.title}>Eventos</h1>
-			</div>
-			<ul className={styles.listContainer}>
-				{eventsContext?.events &&
-					eventsContext.events.map(
-						({ id, status, title, description, grouped }) => (
-							<li className={styles.listItem} key={id}>
-								<CardComponent title={title} description={description} />
-							</li>
-						)
-					)}
-			</ul>
+			{!events.length ? (
+				<>
+					<h1>Poxa parece que não tem nenhum evento cadastrado para você</h1>
+				</>
+			) : (
+				<>
+					<div className={styles.titleContainer}>
+						<h1 className={styles.title}>Eventos</h1>
+					</div>
+					<ul className={styles.listContainer}>
+						{events &&
+							events.map(({ id, status, title, description, grouped }) => (
+								<li className={styles.listItem} key={id}>
+									<CardComponent title={title} description={description} />
+								</li>
+							))}
+					</ul>
+				</>
+			)}
 		</section>
 	);
 }
